@@ -5,6 +5,7 @@ const inputRef = document.querySelector("#datetime-picker");
 const buttonStartRef = document.querySelector('button[data-start]');
 const valueRef = document.querySelectorAll('.value')
 // valueRef.textContent = 'asdasasd';
+// asd
 
 buttonStartRef.disabled = true;
 let timeInterval = null;
@@ -19,7 +20,7 @@ flatpickr("input[type=text]", options = {
     onClose(selectedDates) {
       clearInterval(timeInterval)
       console.log(selectedDates[0]);
-      if(this.selectedDates[0] < now ){
+      if(this.selectedDates[0] < now ){ 
         buttonStartRef.disabled = true;
         alert("Please choose a date in the future")
         return;
