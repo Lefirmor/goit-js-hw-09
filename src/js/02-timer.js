@@ -6,6 +6,7 @@ const buttonStartRef = document.querySelector('button[data-start]');
 const valueRef = document.querySelectorAll('.value')
 // valueRef.textContent = 'asdasasd';
 // asd
+let options = null;
 
 buttonStartRef.disabled = true;
 let timeInterval = null;
