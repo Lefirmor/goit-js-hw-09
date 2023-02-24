@@ -19,5 +19,6 @@ function getRandomHexColor() {
     stopButton.disabled = true;
     clearInterval(timerId)
     
-  })
+  }) 
+  //asd
   
