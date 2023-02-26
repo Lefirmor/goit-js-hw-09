@@ -8,11 +8,22 @@ const valueRef = document.querySelectorAll('.value')
 // asd
 let options = null;
 
-buttonStartRef.disabled = true;
+buttonStartRef.disabled = false;
 let timeInterval = null;
 let choosenTime = null;
+let selectedUserDate = null
 let now = Date.now();
-buttonStartRef.addEventListener('click', flatpickr)
+buttonStartRef.addEventListener('click', () => {
+  timeInterval = setInterval(() =>{
+    const currentTime = new Date();
+      let deltaTime = choosenTime - currentTime;
+      let timeComponents = convertMs(deltaTime)
+      documentTime(timeComponents)
+      console.log(timeComponents) 
+      
+      
+  }, 1000)
+})
 flatpickr("input[type=text]", options = {
     enableTime: true,
     time_24hr: true,
@@ -28,15 +39,7 @@ flatpickr("input[type=text]", options = {
         }
       buttonStartRef.disabled = false;
        choosenTime = selectedDates[0];
-       timeInterval = setInterval(() =>{
-        const currentTime = new Date();
-          let deltaTime = choosenTime - currentTime;
-          let timeComponents = convertMs(deltaTime)
-          documentTime(timeComponents)
-          console.log(timeComponents) 
-          
-          
-      }, 1000)
+       
       //  documentTime()
       
     },
