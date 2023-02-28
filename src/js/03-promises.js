@@ -31,6 +31,7 @@ function Submit(e){
     Number(Refs.amountRef.value),
     
   )
+  Refs.formSubmit.reset();
   
   function getNum(delay, step, amount)  {
     for(let position = 1; position <= amount; position++){

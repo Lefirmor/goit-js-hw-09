@@ -29,7 +29,7 @@ buttonStartRef.addEventListener('click', () => {
       deltaTime = choosenTime - currentTime;
       timeComponents = convertMs(deltaTime)
       documentTime(timeComponents)
-      console.log(timeComponents) 
+      // console.log(timeComponents) 
       if (deltaTime <= 0) {
         clearInterval(timeInterval);
         return;
