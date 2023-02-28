@@ -8,22 +8,45 @@ const valueRef = document.querySelectorAll('.value')
 // asd
 let options = null;
 
-buttonStartRef.disabled = false;
+buttonStartRef.disabled = true;
 let timeInterval = null;
 let choosenTime = null;
 let selectedUserDate = null
 let now = Date.now();
 buttonStartRef.addEventListener('click', () => {
+  const currentTime = new Date();
+  let deltaTime = choosenTime - currentTime;
+  let timeComponents = convertMs(deltaTime)
+  documentTime(timeComponents)
+  if (deltaTime <= 0) {
+    clearInterval(timeInterval);
+    return;
+  }
+  
+
   timeInterval = setInterval(() =>{
     const currentTime = new Date();
-      let deltaTime = choosenTime - currentTime;
-      let timeComponents = convertMs(deltaTime)
+      deltaTime = choosenTime - currentTime;
+      timeComponents = convertMs(deltaTime)
       documentTime(timeComponents)
       console.log(timeComponents) 
-      
+      if (deltaTime <= 0) {
+        clearInterval(timeInterval);
+        return;
+      }
       
   }, 1000)
 })
+
+
+
+
+
+
+
+
+
+
 flatpickr("input[type=text]", options = {
     enableTime: true,
     time_24hr: true,
@@ -65,7 +88,10 @@ flatpickr("input[type=text]", options = {
     const minute = second * 60;
     const hour = minute * 60;
     const day = hour * 24;
-  
+    
+    if (ms < 0) {
+      return { days: '00', hours: '00', minutes: '00', seconds: '00' };
+  }
     // Remaining days
     const days = pad(Math.floor(ms / day));
     // Remaining hours
